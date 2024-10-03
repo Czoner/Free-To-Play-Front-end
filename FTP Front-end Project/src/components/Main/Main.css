@@ -1,0 +1,32 @@
+.title {
+  font-family: "RobotoRegular", Arial, sans-serif;
+  font-weight: 700;
+  font-size: 52px;
+  line-height: 40px;
+}
+
+.cards {
+  width: 400px;
+  border: 50px;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.card__img {
+  width: 400px;
+  height: 272px;
+}
+
+.card__info {
+  width: 400px;
+  padding: 20px 24px;
+  color: black;
+  background-color: aliceblue;
+}
+
+.card__name {
+  font-family: "RobotoMedium", Arial, sans-serif;
+  width: 352px;
+
+  margin: 0;
+}

@@ -1,0 +1,103 @@
+.header {
+  display: flex;
+  justify-content: space-between;
+  background-color: black;
+  margin-top: 25px;
+}
+
+.header__logo {
+  display: flex;
+  gap: 75px;
+}
+
+.header__description {
+  display: flex;
+}
+
+.header__games {
+  font-family: "RobotoMedium", Arial, sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 20px;
+  text-align: center;
+  border: none;
+  border-radius: 10px;
+  color: white;
+  background-color: transparent;
+  padding: 0 20px;
+}
+
+.header__games:hover {
+  background-color: #303030;
+  cursor: pointer;
+}
+
+.header__games:active {
+  opacity: 0.7;
+}
+
+.header__stufff {
+  font-family: "RobotoRegular", Arial, sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 20px;
+  text-align: center;
+  border: none;
+  border-radius: 10px;
+  color: white;
+  background-color: transparent;
+  padding: 0 20px;
+}
+
+.header__stufff:hover {
+  background-color: #303030;
+  cursor: pointer;
+}
+
+.header__stufff:active {
+  opacity: 0.7;
+}
+
+.header__signin {
+  font-family: "RobotoRegular", Arial, sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 20px;
+  text-align: center;
+  border: none;
+  border-radius: 10px;
+  color: white;
+  background-color: transparent;
+  padding: 0 20px;
+}
+
+.header__signin:hover {
+  background-color: #303030;
+  cursor: pointer;
+}
+
+.header__signin:active {
+  opacity: 0.7;
+}
+
+.header__signup {
+  font-family: "RobotoRegular", Arial, sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 20px;
+  text-align: center;
+  border: none;
+  border-radius: 10px;
+  color: white;
+  background-color: transparent;
+  padding: 0 20px;
+}
+
+.header__signup:hover {
+  background-color: #303030;
+  cursor: pointer;
+}
+
+.header__signup:active {
+  opacity: 0.7;
+}
