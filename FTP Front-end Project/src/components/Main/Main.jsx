@@ -13,10 +13,13 @@ const Main = () => {
         <div className="card__info">
           <h2 className="card__name">Words asdadvfahewrbvahdvouabewh</h2>
           <p className="card__description">
-            Desdcription asdfasdfafvb eairvasefhbvsdfvuaerhjvoausd dvyasd ha
-            dvuhavbauyouiasdbvcajv asbvcasd
-            cauybcaouisdabvuaofhduvoauyrivcjheduevheashbouiewujcaoiucasdc
+            Ever since I read Richard asdfaisfd asdf asdf
+            ddsadfasedfasdfasdawsdif hdsvcasdfyaoiuds ashdf asdhascdasdvuocsx
+            asdhvc asd weafhasdofiaybwedf aewyfasdhf asdfoauwe ashdvcoauwse
+            dfasdf aweusfasdufyawsef asdf awsd fa ewisfefeiuwedieuwf efuysd
+            fdsfbewuifjifgjbndb gjtgoifduggrndoirg n
           </p>
+          <button>More</button>
         </div>
       </div>
     </main>
