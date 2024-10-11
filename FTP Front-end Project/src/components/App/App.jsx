@@ -1,32 +1,75 @@
 import { Routes, Route } from "react-router-dom";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import reactLogo from "../../assets/react.svg";
 import viteLogo from "/vite.svg";
 import "./App.css";
 import Header from "../Header/Header";
 import Main from "../Main/Main";
+
+import { getGames } from "../../utils/Api";
 import Footer from "../Footer/Footer";
+import SignInModal from "../ModalWithForm/SignInModal";
 
 function App() {
-  const [count, setCount] = useState(0);
+  const [activeModal, setActiveModal] = useState("");
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [games, setGames] = useState([]);
+
+  const handleCreateModal = () => {
+    setActiveModal("create");
+  };
+
+  const handleSignUpModal = () => {
+    setActiveModal("signUp");
+  };
+
+  const handleSingInModal = () => {
+    setActiveModal("signIn");
+  };
+
+  const handleCloseModal = () => {
+    setActiveModal("");
+  };
+
+  useEffect(() => {
+    if (!activeModal) return;
+
+    const handleEscClose = (e) => {
+      if (e.key === "Escape") {
+        handleCloseModal();
+      }
+    };
+    document.addEventListener("keydown", handleEscClose);
+
+    return () => {
+      document.removeEventListener("keydown", handleEscClose);
+    };
+  }, [activeModal]);
+
+  useEffect(() => {
+    getGames().then((data) => {
+      setGames(data);
+      console.log(data);
+    });
+  }, []);
 
   return (
     <>
-      <Header />
+      <Header isLoggedIn={isLoggedIn} onSignInModal={handleSingInModal} />
       <Routes>
         <Route exact path="/" element={<Main />} />
         <Route exact path="/games" />
       </Routes>
       <Footer />
-      {/* <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
+
+      {activeModal === "signIn" && (
+        <SignInModal
+          isOpen={activeModal === "signIn"}
+          handleCloseModal={handleCloseModal}
+        />
+      )}
+
+      {/* <h1>Vite + React</h1>
       <div className="card">
         <button onClick={() => setCount((count) => count + 1)}>
           count is {count}

@@ -7,11 +7,6 @@ const processServerResponse = (res) => {
 export const baseUrl = "https://www.freetogame.com/api";
 
 export const getGames = () => {
-  const gameApi = fetch(`${baseUrl}/games`)
-    .then((res) => res.json())
-    .then((data) => {
-      console.log(data);
-    })
-    .then(processServerResponse);
+  const gameApi = fetch(`${baseUrl}`).then(processServerResponse);
   return gameApi;
 };
