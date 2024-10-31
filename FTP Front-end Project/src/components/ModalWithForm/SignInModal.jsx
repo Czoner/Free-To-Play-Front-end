@@ -1,13 +1,14 @@
 import React from "react";
 import ModalWithForm from "./ModalWithForm";
 
-const SignInModal = ({ handleCloseModal }) => {
+const SignInModal = ({ handleCloseModal, isOpen }) => {
   return (
     <ModalWithForm
       title="SignIn"
       onClose={handleCloseModal}
       buttonText="Sign In"
       buttonText2="or Sign up"
+      isOpen={isOpen}
     >
       <label className="modal__label">
         <input

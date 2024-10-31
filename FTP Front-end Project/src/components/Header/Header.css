@@ -1,8 +1,11 @@
 .header {
   display: flex;
   justify-content: space-between;
+  position: sticky;
+  top: 0px;
   background-color: black;
-  margin-top: 25px;
+  padding: 25px 0;
+  will-change: transform;
 }
 
 .header__logo {

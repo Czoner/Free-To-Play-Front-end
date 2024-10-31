@@ -41,34 +41,35 @@
   color: #888;
 } */
 
-.cards {
+.game {
   display: flex;
   flex-direction: column;
-  width: 400px;
   border: 50px;
   border-radius: 10px;
   overflow: hidden;
 }
 
-.card__img {
+.game__img {
   width: 400px;
   height: 372px;
 }
 
-.card__info {
+.game__info {
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
   padding: 20px 24px;
+  height: 120px;
   color: black;
-  background-color: aliceblue;
+  background-color: #c9c9c9;
 }
 
-.card__name {
+.game__name {
   font-family: "RobotoMedium", Arial, sans-serif;
-  margin: 0 0 16px 0;
+  margin: 0;
 }
 
-.card__description {
+.game__description {
   font-family: "RobotoRegular", Arial, sans-serif;
   font-weight: 400;
   font-size: 16px;
@@ -79,4 +80,28 @@
   text-overflow: ellipsis;
   overflow: hidden;
   white-space: nowrap;
+}
+
+.game__button_more {
+  width: 122px;
+  height: 25px;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.game__extra_info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.game__genre {
+  font-family: "RobotoRegular", Arial, sans-serif;
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 20px;
+  margin: 0;
 }

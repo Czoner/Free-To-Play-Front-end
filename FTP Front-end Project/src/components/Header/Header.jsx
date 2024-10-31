@@ -1,12 +1,15 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import ReactLogo from "../../assets/react.svg";
 import "./Header.css";
 
-const Header = ({ isLoggedIn, onSignInModal }) => {
+const Header = ({ isLoggedIn, onSignInModal, onSignUpModal }) => {
   return (
     <header className="header">
       <div className="header__logo">
-        <img src={ReactLogo} alt="Logo" />
+        <Link to="/">
+          <img src={ReactLogo} alt="Logo" />
+        </Link>
         <p>Search Bar Is Here</p>
       </div>
       <div className="header__description">
@@ -27,7 +30,11 @@ const Header = ({ isLoggedIn, onSignInModal }) => {
             >
               Sign In
             </button>
-            <button type="text" className="header__signup">
+            <button
+              type="text"
+              className="header__signup"
+              onClick={onSignUpModal}
+            >
               Sign Up
             </button>
           </>

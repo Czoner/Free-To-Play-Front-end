@@ -1,1 +1,5 @@
-export default class Preloader {}
+import React from "react";
+
+const Preloader = () => {
+  return <div></div>;
+};

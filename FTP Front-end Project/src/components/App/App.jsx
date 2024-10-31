@@ -1,23 +1,22 @@
 import { Routes, Route } from "react-router-dom";
 import { useEffect, useState } from "react";
-import reactLogo from "../../assets/react.svg";
-import viteLogo from "/vite.svg";
 import "./App.css";
 import Header from "../Header/Header";
 import Main from "../Main/Main";
-
-import { getGames } from "../../utils/Api";
+import GamePage from "../GamePage/GamePage";
+import { getGames } from "../../utils/FreetoGameApi";
+import CurrentGameContext from "../contexts/CurrentGameContext";
 import Footer from "../Footer/Footer";
 import SignInModal from "../ModalWithForm/SignInModal";
+import SignUpModal from "../ModalWithForm/SignUpModal";
+import NothingFound from "../NothingFound/NothingFound";
 
 function App() {
   const [activeModal, setActiveModal] = useState("");
+  const [isLoading, setIsLoading] = useState(true);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [error, setError] = useState(null);
   const [games, setGames] = useState([]);
-
-  const handleCreateModal = () => {
-    setActiveModal("create");
-  };
 
   const handleSignUpModal = () => {
     setActiveModal("signUp");
@@ -33,12 +32,13 @@ function App() {
 
   useEffect(() => {
     if (!activeModal) return;
-
     const handleEscClose = (e) => {
+      e.preventDefault();
       if (e.key === "Escape") {
         handleCloseModal();
       }
     };
+
     document.addEventListener("keydown", handleEscClose);
 
     return () => {
@@ -47,27 +47,49 @@ function App() {
   }, [activeModal]);
 
   useEffect(() => {
-    getGames().then((data) => {
-      setGames(data);
-      console.log(data);
-    });
+    getGames()
+      .then((data) => {
+        setError(<NothingFound />);
+      })
+      .catch((err) => {
+        console.error(err);
+        console.log("errror on this preloader");
+      })
+      .finally(() => {
+        setIsLoading(false);
+      });
   }, []);
+
+  if (isLoading && games === 0) {
+    return <NothingFound />;
+  }
+
+  if (error) {
+    return <NothingFound />;
+  }
 
   return (
     <>
-      <Header isLoggedIn={isLoggedIn} onSignInModal={handleSingInModal} />
+      <Header
+        isLoggedIn={isLoggedIn}
+        onSignInModal={handleSingInModal}
+        onSignUpModal={handleSignUpModal}
+      />
       <Routes>
-        <Route exact path="/" element={<Main />} />
-        <Route exact path="/games" />
+        <Route exact path="/" element={<Main games={games} />} />
+        <Route exact path="/games/:id" element={<GamePage />} />
       </Routes>
       <Footer />
 
-      {activeModal === "signIn" && (
-        <SignInModal
-          isOpen={activeModal === "signIn"}
-          handleCloseModal={handleCloseModal}
-        />
-      )}
+      <SignInModal
+        isOpen={activeModal === "signIn"}
+        handleCloseModal={handleCloseModal}
+      />
+
+      <SignUpModal
+        isOpen={activeModal === "signUp"}
+        handleCloseModal={handleCloseModal}
+      />
 
       {/* <h1>Vite + React</h1>
       <div className="card">
