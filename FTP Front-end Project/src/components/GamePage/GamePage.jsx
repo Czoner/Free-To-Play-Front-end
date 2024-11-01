@@ -2,21 +2,37 @@ import React from "react";
 import { Link, useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { detailsOfGame, genreOfGame } from "../../utils/FreetoGameApi";
+import NothingFound from "../NothingFound/NothingFound";
+import Preloader from "../Preloader/Preloader";
 import "./GamePage.css";
 
-const GamePage = ({}) => {
+const GamePage = () => {
   const { id } = useParams();
   const [selectedGame, setSelectedGame] = useState({});
   const [relatedGames, setRelatedGames] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
+  const [error, setError] = useState(false);
 
   const randomizeList = (list) => {
     return list.sort(() => Math.random() - 0.5).slice(0, 3);
   };
 
   useEffect(() => {
-    detailsOfGame(id).then((data) => {
-      setSelectedGame(data);
-    });
+    detailsOfGame(id)
+      .then((data) => {
+        if (data) {
+          setSelectedGame(data);
+        } else {
+          setError(true);
+        }
+      })
+      .catch((err) => {
+        console.error(err);
+        setError(true);
+      })
+      .finally(() => {
+        setIsLoading(false);
+      });
   }, [id]);
 
   useEffect(() => {
@@ -37,6 +53,13 @@ const GamePage = ({}) => {
     }
   }, [selectedGame]);
 
+  if (isLoading) {
+    return <Preloader />;
+  }
+
+  if (error || !selectedGame) {
+    return <NothingFound />;
+  }
   return (
     <div className="gamepage">
       <section className="gamepage__leftside">
@@ -49,6 +72,7 @@ const GamePage = ({}) => {
           Publication: {selectedGame.publisher}
         </p>
       </section>
+
       <section className="gamepage__rightside">
         <div className="gamepage__infolayout">
           <h2 className="gamepage__titlelayout">About {selectedGame.title}</h2>

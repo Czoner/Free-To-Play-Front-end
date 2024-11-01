@@ -11,11 +11,11 @@
 }
 
 .nothingpage__title {
-  font-family: "RobotoMedium", Arial, sans-serif;
+  font-family: "OpenSans-SemiBold", Arial, sans-serif;
 }
 
 .nothingpage__bodytext {
-  font-family: "RobotoRegular", Arial, sans-serif;
+  font-family: "OpenSans-SemiBold", Arial, sans-serif;
   font-weight: 500;
   font-size: 23px;
   line-height: 24px;
@@ -23,4 +23,7 @@
 
 .nothingpage__image {
   background-color: transparent;
+  color: white;
+  width: 300px;
+  height: 300px;
 }

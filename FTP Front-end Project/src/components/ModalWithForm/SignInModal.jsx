@@ -1,7 +1,18 @@
-import React from "react";
+import React, { useState } from "react";
+import { useEffect } from "react";
+import { useForm } from "../Hooks/useForm";
 import ModalWithForm from "./ModalWithForm";
 
 const SignInModal = ({ handleCloseModal, isOpen }) => {
+  const { values, handleChange } = useForm({
+    username: "",
+    password: "",
+  });
+
+  useEffect(() => {
+    console.log(values);
+  }, [values]);
+
   return (
     <ModalWithForm
       title="SignIn"
@@ -16,7 +27,9 @@ const SignInModal = ({ handleCloseModal, isOpen }) => {
           required
           className="modal__input"
           placeholder="Username"
-          name="Username"
+          name="username"
+          value={values.username}
+          onChange={handleChange}
         />
         <input
           type="password"
@@ -24,6 +37,8 @@ const SignInModal = ({ handleCloseModal, isOpen }) => {
           className="modal__input"
           placeholder="Password"
           name="password"
+          value={values.password}
+          onChange={handleChange}
         />
       </label>
     </ModalWithForm>

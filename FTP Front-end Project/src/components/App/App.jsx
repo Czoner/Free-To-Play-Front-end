@@ -5,18 +5,19 @@ import Header from "../Header/Header";
 import Main from "../Main/Main";
 import GamePage from "../GamePage/GamePage";
 import { getGames } from "../../utils/FreetoGameApi";
-import CurrentGameContext from "../contexts/CurrentGameContext";
 import Footer from "../Footer/Footer";
 import SignInModal from "../ModalWithForm/SignInModal";
 import SignUpModal from "../ModalWithForm/SignUpModal";
 import NothingFound from "../NothingFound/NothingFound";
+import Preloader from "../Preloader/Preloader";
 
 function App() {
   const [activeModal, setActiveModal] = useState("");
   const [isLoading, setIsLoading] = useState(true);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
-  const [error, setError] = useState(null);
+  const [error, setError] = useState(false);
   const [games, setGames] = useState([]);
+  const [filteredGames, setFilteredGames] = useState([]);
 
   const handleSignUpModal = () => {
     setActiveModal("signUp");
@@ -49,19 +50,34 @@ function App() {
   useEffect(() => {
     getGames()
       .then((data) => {
-        setError(<NothingFound />);
+        if (data) {
+          setGames(data);
+          setFilteredGames(data);
+        } else {
+          setError(true);
+        }
       })
       .catch((err) => {
         console.error(err);
-        console.log("errror on this preloader");
+        setError(true);
       })
       .finally(() => {
         setIsLoading(false);
       });
   }, []);
 
-  if (isLoading && games === 0) {
-    return <NothingFound />;
+  //handles the Search Bar
+
+  const handleSearch = (searchedGame) => {
+    const searchedLowerCaseGame = searchedGame.toLowerCase();
+    const results = games.filter((game) => {
+      return game.title.toLowerCase().includes(searchedLowerCaseGame);
+    });
+    setFilteredGames(results);
+  };
+
+  if (isLoading) {
+    return <Preloader />;
   }
 
   if (error) {
@@ -74,9 +90,10 @@ function App() {
         isLoggedIn={isLoggedIn}
         onSignInModal={handleSingInModal}
         onSignUpModal={handleSignUpModal}
+        onSearchBar={handleSearch}
       />
       <Routes>
-        <Route exact path="/" element={<Main games={games} />} />
+        <Route exact path="/" element={<Main games={filteredGames} />} />
         <Route exact path="/games/:id" element={<GamePage />} />
       </Routes>
       <Footer />

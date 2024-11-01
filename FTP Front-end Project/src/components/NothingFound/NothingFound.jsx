@@ -1,6 +1,6 @@
 import React from "react";
-import errorKid from "../../assets/react.svg";
 import "./NothingFound.css";
+import Dizzy from "../../assets/DizzyWhite.svg";
 
 const NothingFound = () => {
   return (
@@ -10,7 +10,7 @@ const NothingFound = () => {
         Sorry, we could not find the game you are looking for. Please try again
         later
       </p>
-      <img className="nothingpage__image" src={errorKid}></img>
+      <img className="nothingpage__image" src={Dizzy}></img>
     </div>
   );
 };

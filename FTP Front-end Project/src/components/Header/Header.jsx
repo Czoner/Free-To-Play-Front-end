@@ -1,16 +1,17 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import ReactLogo from "../../assets/react.svg";
+import SearchForm from "../SearchForm/SearchForm";
 import "./Header.css";
 
-const Header = ({ isLoggedIn, onSignInModal, onSignUpModal }) => {
+const Header = ({ isLoggedIn, onSignInModal, onSignUpModal, onSearchBar }) => {
   return (
     <header className="header">
       <div className="header__logo">
         <Link to="/">
           <img src={ReactLogo} alt="Logo" />
         </Link>
-        <p>Search Bar Is Here</p>
+        <SearchForm searchBar={onSearchBar} />
       </div>
       <div className="header__description">
         {isLoggedIn ? (
