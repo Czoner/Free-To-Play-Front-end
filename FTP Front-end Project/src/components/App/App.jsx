@@ -1,10 +1,12 @@
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, Navigate, useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import "./App.css";
 import Header from "../Header/Header";
 import Main from "../Main/Main";
 import GamePage from "../GamePage/GamePage";
 import { getGames } from "../../utils/FreetoGameApi";
+import { CurrentUserContext } from "../contexts/CurrentUserContext";
+import * as auth from "../../utils/Auth";
 import Footer from "../Footer/Footer";
 import SignInModal from "../ModalWithForm/SignInModal";
 import SignUpModal from "../ModalWithForm/SignUpModal";
@@ -17,13 +19,19 @@ function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [error, setError] = useState(false);
   const [games, setGames] = useState([]);
+  const [userData, setUserData] = useState({
+    username: "",
+    email: "",
+    password: "",
+  });
   const [filteredGames, setFilteredGames] = useState([]);
+  const navigate = useNavigate();
 
   const handleSignUpModal = () => {
     setActiveModal("signUp");
   };
 
-  const handleSingInModal = () => {
+  const handleSignInModal = () => {
     setActiveModal("signIn");
   };
 
@@ -34,7 +42,6 @@ function App() {
   useEffect(() => {
     if (!activeModal) return;
     const handleEscClose = (e) => {
-      e.preventDefault();
       if (e.key === "Escape") {
         handleCloseModal();
       }
@@ -76,6 +83,30 @@ function App() {
     setFilteredGames(results);
   };
 
+  //Handles the Sign UP
+
+  const handleSignUp = ({ username, email, password }) => {
+    function makeRequest() {
+      return auth.signUp({ username, email, password }).then(() => {
+        setIsLoggedIn(true);
+        setUserData({ username, email, password });
+        navigate("/");
+      });
+    }
+    handleSubmit(makeRequest);
+  };
+
+  //Handles the Sign IN
+
+  //Handles the submit buttons
+  function handleSubmit(request) {
+    setIsLoading(true);
+    request()
+      .then(handleCloseModal)
+      .catch(console.error)
+      .finally(() => setIsLoading(false));
+  }
+
   if (isLoading) {
     return <Preloader />;
   }
@@ -85,12 +116,13 @@ function App() {
   }
 
   return (
-    <>
+    <CurrentUserContext.Provider value={userData}>
       <Header
         isLoggedIn={isLoggedIn}
-        onSignInModal={handleSingInModal}
+        onSignInModal={handleSignInModal}
         onSignUpModal={handleSignUpModal}
         onSearchBar={handleSearch}
+        username={userData.username}
       />
       <Routes>
         <Route exact path="/" element={<Main games={filteredGames} />} />
@@ -101,11 +133,14 @@ function App() {
       <SignInModal
         isOpen={activeModal === "signIn"}
         handleCloseModal={handleCloseModal}
+        handleSignUpModal={handleSignUpModal}
       />
 
       <SignUpModal
         isOpen={activeModal === "signUp"}
         handleCloseModal={handleCloseModal}
+        handleSignInModal={handleSignInModal}
+        handleSignUp={handleSignUp}
       />
 
       {/* <h1>Vite + React</h1>
@@ -120,7 +155,7 @@ function App() {
       <p className="read-the-docs">
         Click on the Vite and React logos to learn more
       </p> */}
-    </>
+    </CurrentUserContext.Provider>
   );
 }
 

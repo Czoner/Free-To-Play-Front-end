@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import ReactLogo from "../../assets/react.svg";
+import FTGLogo from "../../assets/FreetoGameLogo.jpg";
 import SearchForm from "../SearchForm/SearchForm";
 import "./Header.css";
 
@@ -9,21 +9,17 @@ const Header = ({ isLoggedIn, onSignInModal, onSignUpModal, onSearchBar }) => {
     <header className="header">
       <div className="header__logo">
         <Link to="/">
-          <img src={ReactLogo} alt="Logo" />
+          <img src={FTGLogo} alt="Logo" className="header__image" />
         </Link>
         <SearchForm searchBar={onSearchBar} />
       </div>
       <div className="header__description">
         {isLoggedIn ? (
-          <></>
+          <>
+            <div>Is Logged in</div>
+          </>
         ) : (
           <>
-            <button type="text" className="header__games">
-              My Games
-            </button>
-            <button type="text" className="header__stufff">
-              ahbaiuewjhad
-            </button>
             <button
               type="text"
               className="header__signin"

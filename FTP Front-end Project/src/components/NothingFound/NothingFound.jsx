@@ -7,8 +7,8 @@ const NothingFound = () => {
     <div className="nothingpage">
       <h1 className="nothingpage__title">Nothing to be found</h1>
       <p className="nothingpage__bodytext">
-        Sorry, we could not find the game you are looking for. Please try again
-        later
+        Sorry, something went wrong during the request. There may be a
+        connection issue or the server may be down. Please try again later.
       </p>
       <img className="nothingpage__image" src={Dizzy}></img>
     </div>

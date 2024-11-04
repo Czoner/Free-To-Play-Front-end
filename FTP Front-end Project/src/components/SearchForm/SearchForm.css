@@ -6,3 +6,10 @@
   outline: none;
   padding: 0 0 0 24px;
 }
+
+@media screen and (max-width: 824px) {
+  .searchbar {
+    width: 276px;
+    height: 45px;
+  }
+}

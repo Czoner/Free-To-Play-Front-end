@@ -16,3 +16,14 @@
   margin: 0;
   padding: 0;
 }
+
+@media screen and (max-width: 703px) {
+  .title {
+    font-size: 40px;
+    line-height: 40px;
+  }
+
+  .games__list {
+    grid-template-columns: repeat(auto-fit, 285px);
+  }
+}

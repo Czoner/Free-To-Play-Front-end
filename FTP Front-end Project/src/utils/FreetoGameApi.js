@@ -1,10 +1,10 @@
-const processServerResponse = (res) => {
+export const processServerResponse = (res) => {
   if (res.ok) {
     return res.json();
   }
   return Promise.reject(`Error: ${res.status}`);
 };
-export const baseUrl = "http://localhost:3002/api";
+export const baseUrl = "http://localhost:3002";
 
 export const getGames = () => {
   const gameApi = fetch(`${baseUrl}/games?sort-by=alphabetical`)
