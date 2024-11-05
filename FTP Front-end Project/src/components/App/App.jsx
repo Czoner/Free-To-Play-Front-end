@@ -6,6 +6,7 @@ import Main from "../Main/Main";
 import GamePage from "../GamePage/GamePage";
 import { getGames } from "../../utils/FreetoGameApi";
 import { CurrentUserContext } from "../contexts/CurrentUserContext";
+import { getToken, removeToken } from "../../utils/token";
 import * as auth from "../../utils/Auth";
 import Footer from "../Footer/Footer";
 import SignInModal from "../ModalWithForm/SignInModal";
@@ -55,6 +56,8 @@ function App() {
   }, [activeModal]);
 
   useEffect(() => {
+    const jwt = getToken();
+
     getGames()
       .then((data) => {
         if (data) {
@@ -70,6 +73,17 @@ function App() {
       })
       .finally(() => {
         setIsLoading(false);
+      });
+
+    auth
+      .getUser(jwt)
+      .then((data) => {
+        setIsLoggedIn(true);
+        setUserData(data);
+        navigate("/");
+      })
+      .catch((err) => {
+        console.error(err);
       });
   }, []);
 
@@ -98,6 +112,35 @@ function App() {
 
   //Handles the Sign IN
 
+  const handleSignIn = ({ email, password }) => {
+    if (!email || !password) {
+      return;
+    }
+
+    auth
+      .signIn(email, password)
+      .then((res) => {
+        if (res.token) {
+          auth
+            .getUser(res.token)
+            .then((data) => {
+              setIsLoggedIn(true);
+              setUserData(data);
+              navigate("/");
+            })
+            .catch((err) => {
+              console.error(err);
+            });
+          setToken(res.token);
+          handleCloseModal();
+        }
+      })
+      .catch((err) => {
+        console.error(err);
+        console.log("this is wrong ");
+      });
+  };
+
   //Handles the submit buttons
   function handleSubmit(request) {
     setIsLoading(true);
@@ -106,6 +149,13 @@ function App() {
       .catch(console.error)
       .finally(() => setIsLoading(false));
   }
+
+  const handleLogOut = (e) => {
+    e.preventDefault();
+    setIsLoggedIn(false);
+    removeToken();
+    navigate("/");
+  };
 
   if (isLoading) {
     return <Preloader />;
@@ -123,6 +173,7 @@ function App() {
         onSignUpModal={handleSignUpModal}
         onSearchBar={handleSearch}
         username={userData.username}
+        handleLogOut={handleLogOut}
       />
       <Routes>
         <Route exact path="/" element={<Main games={filteredGames} />} />
@@ -134,6 +185,7 @@ function App() {
         isOpen={activeModal === "signIn"}
         handleCloseModal={handleCloseModal}
         handleSignUpModal={handleSignUpModal}
+        handleSignIn={handleSignIn}
       />
 
       <SignUpModal
@@ -142,19 +194,6 @@ function App() {
         handleSignInModal={handleSignInModal}
         handleSignUp={handleSignUp}
       />
-
-      {/* <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p> */}
     </CurrentUserContext.Provider>
   );
 }

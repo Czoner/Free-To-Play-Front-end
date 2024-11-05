@@ -4,10 +4,10 @@ export const processServerResponse = (res) => {
   }
   return Promise.reject(`Error: ${res.status}`);
 };
-export const baseUrl = "http://localhost:3002";
+export const baseUrl = "http://localhost:3002/";
 
 export const getGames = () => {
-  const gameApi = fetch(`${baseUrl}/games?sort-by=alphabetical`)
+  const gameApi = fetch(`${baseUrl}api/games?sort-by=alphabetical`)
     .then(processServerResponse)
     .then((data) => {
       return data;
@@ -16,7 +16,7 @@ export const getGames = () => {
 };
 
 export const detailsOfGame = (id) => {
-  return fetch(`${baseUrl}/game?id=${id}`)
+  return fetch(`${baseUrl}api/game?id=${id}`)
     .then(processServerResponse)
     .then((data) => {
       return data;
@@ -24,7 +24,7 @@ export const detailsOfGame = (id) => {
 };
 
 export const genreOfGame = (genre) => {
-  return fetch(`${baseUrl}/games?category=${genre}`)
+  return fetch(`${baseUrl}api/games?category=${genre}`)
     .then(processServerResponse)
     .then((data) => {
       return data;

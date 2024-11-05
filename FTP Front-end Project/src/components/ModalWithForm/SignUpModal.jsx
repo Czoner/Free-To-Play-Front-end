@@ -41,11 +41,11 @@ const SignUpModal = ({
           onChange={handleChange}
         />
       </label>
-      <label className="modal__label" htmlFor="username">
+      <label className="modal__label" htmlFor="username__signup">
         <input
           type="text"
           name="username"
-          id="username"
+          id="username__signup"
           className="modal__input"
           required
           placeholder="Username"
@@ -53,11 +53,11 @@ const SignUpModal = ({
           onChange={handleChange}
         />
       </label>
-      <label className="modal__label" htmlFor="password">
+      <label className="modal__label" htmlFor="password__signup">
         <input
           type="password"
           name="password"
-          id="password"
+          id="password__signup"
           className="modal__input"
           required
           placeholder="Password"

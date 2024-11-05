@@ -4,7 +4,13 @@ import FTGLogo from "../../assets/FreetoGameLogo.jpg";
 import SearchForm from "../SearchForm/SearchForm";
 import "./Header.css";
 
-const Header = ({ isLoggedIn, onSignInModal, onSignUpModal, onSearchBar }) => {
+const Header = ({
+  isLoggedIn,
+  onSignInModal,
+  onSignUpModal,
+  onSearchBar,
+  handleLogOut,
+}) => {
   return (
     <header className="header">
       <div className="header__logo">
@@ -17,6 +23,8 @@ const Header = ({ isLoggedIn, onSignInModal, onSignUpModal, onSearchBar }) => {
         {isLoggedIn ? (
           <>
             <div>Is Logged in</div>
+
+            <button onClick={handleLogOut}>LOGGING OUT</button>
           </>
         ) : (
           <>

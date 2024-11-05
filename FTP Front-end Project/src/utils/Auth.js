@@ -17,7 +17,7 @@ export const signUp = ({ username, email, password }) => {
 };
 
 export const signIn = ({ username, password }) => {
-  return request(`${baseUrl}/signin`, {
+  return request(`${baseUrl}signin`, {
     method: "POST",
     headers: {
       Accept: "application/json",
@@ -28,10 +28,10 @@ export const signIn = ({ username, password }) => {
 };
 
 export const getUser = (token) =>
-  request(`${baseUrl}/users/me`, {
+  request(`${baseUrl}users/me`, {
     method: "GET",
     headers: {
-      "Content-Type": "application/json",
       Authorization: `Bearer ${token}`,
+      "Content-Type": "application/json",
     },
   });
