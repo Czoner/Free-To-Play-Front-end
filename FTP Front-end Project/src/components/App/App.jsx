@@ -6,7 +6,7 @@ import Main from "../Main/Main";
 import GamePage from "../GamePage/GamePage";
 import { getGames } from "../../utils/FreetoGameApi";
 import { CurrentUserContext } from "../contexts/CurrentUserContext";
-import { getToken, removeToken } from "../../utils/token";
+import { setToken, getToken, removeToken } from "../../utils/token";
 import * as auth from "../../utils/Auth";
 import Footer from "../Footer/Footer";
 import SignInModal from "../ModalWithForm/SignInModal";
@@ -112,14 +112,15 @@ function App() {
 
   //Handles the Sign IN
 
-  const handleSignIn = ({ email, password }) => {
-    if (!email || !password) {
+  const handleSignIn = ({ username, password }) => {
+    if (!username || !password) {
       return;
     }
 
-    auth
-      .signIn(email, password)
+    return auth
+      .signIn({ username, password })
       .then((res) => {
+        console.log(res);
         if (res.token) {
           auth
             .getUser(res.token)

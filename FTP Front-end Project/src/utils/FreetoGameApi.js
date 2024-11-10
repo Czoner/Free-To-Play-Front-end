@@ -4,7 +4,10 @@ export const processServerResponse = (res) => {
   }
   return Promise.reject(`Error: ${res.status}`);
 };
-export const baseUrl = "http://localhost:3002/";
+export const baseUrl =
+  process.env.NODE_ENV === "production"
+    ? "https://api.freegames.qualitypoolsboulder.com/"
+    : "http://localhost:3002/";
 
 export const getGames = () => {
   const gameApi = fetch(`${baseUrl}api/games?sort-by=alphabetical`)
