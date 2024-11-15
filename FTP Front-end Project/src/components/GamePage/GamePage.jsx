@@ -64,7 +64,7 @@ const GamePage = () => {
     <div className="gamepage">
       <section className="gamepage__leftside">
         <h1 className="gamepage__title">{selectedGame.title}</h1>
-        <img src={selectedGame.thumbnail} />
+        <img src={selectedGame.thumbnail} className="gamepage__image" />
         <p className="gamepage__developer">
           Developer: {selectedGame.developer}
         </p>

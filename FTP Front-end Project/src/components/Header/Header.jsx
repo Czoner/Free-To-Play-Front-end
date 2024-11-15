@@ -10,7 +10,14 @@ const Header = ({
   onSignUpModal,
   onSearchBar,
   handleLogOut,
+  username,
 }) => {
+  function firstLetterCapitalize(text) {
+    return text.charAt(0).toUpperCase() + text.slice(1);
+  }
+
+  const userNameResult = firstLetterCapitalize(username);
+
   return (
     <header className="header">
       <div className="header__logo">
@@ -22,9 +29,11 @@ const Header = ({
       <div className="header__description">
         {isLoggedIn ? (
           <>
-            <div>Is Logged in</div>
+            <div className="header__username">{userNameResult}</div>
 
-            <button onClick={handleLogOut}>LOGGING OUT</button>
+            <button onClick={handleLogOut} className="header__signOut">
+              Sign Out
+            </button>
           </>
         ) : (
           <>

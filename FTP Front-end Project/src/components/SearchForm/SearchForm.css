@@ -7,7 +7,7 @@
   padding: 0 0 0 24px;
 }
 
-@media screen and (max-width: 824px) {
+@media screen and (max-width: 900px) {
   .searchbar {
     width: 276px;
     height: 45px;

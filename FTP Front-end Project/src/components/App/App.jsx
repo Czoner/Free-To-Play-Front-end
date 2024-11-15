@@ -120,7 +120,6 @@ function App() {
     return auth
       .signIn({ username, password })
       .then((res) => {
-        console.log(res);
         if (res.token) {
           auth
             .getUser(res.token)
