@@ -9,27 +9,22 @@ export const baseUrl =
     ? "https://api.freegames.qualitypoolsboulder.com/"
     : "http://localhost:3002/";
 
-export const getGames = () => {
-  const gameApi = fetch(`${baseUrl}api/games?sort-by=alphabetical`)
+function request(url, options) {
+  return fetch(url, options)
     .then(processServerResponse)
     .then((data) => {
       return data;
     });
-  return gameApi;
+}
+
+export const getGames = () => {
+  return request(`${baseUrl}api/games?sort-by=alphabetical`);
 };
 
 export const detailsOfGame = (id) => {
-  return fetch(`${baseUrl}api/game?id=${id}`)
-    .then(processServerResponse)
-    .then((data) => {
-      return data;
-    });
+  return request(`${baseUrl}api/game?id=${id}`);
 };
 
 export const genreOfGame = (genre) => {
-  return fetch(`${baseUrl}api/games?category=${genre}`)
-    .then(processServerResponse)
-    .then((data) => {
-      return data;
-    });
+  return request(`${baseUrl}api/games?category=${genre}`);
 };

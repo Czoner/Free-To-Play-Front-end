@@ -1,7 +1,6 @@
 import React, { useState } from "react";
-import { useEffect } from "react";
-import { useForm } from "../Hooks/useForm";
 import ModalWithForm from "./ModalWithForm";
+import { useFormAndValidation } from "../../Hooks/useFormAndValidation";
 
 const SignInModal = ({
   handleCloseModal,
@@ -9,14 +8,15 @@ const SignInModal = ({
   handleSignUpModal,
   handleSignIn,
 }) => {
-  const { values, handleChange } = useForm({
-    username: "",
-    password: "",
-  });
+  const { values, handleChange, isValid, errors, resetForm } =
+    useFormAndValidation();
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    handleSignIn(values);
+    if (isValid) {
+      handleSignIn(values);
+      resetForm();
+    }
   };
 
   return (
@@ -40,6 +40,7 @@ const SignInModal = ({
           value={values.username}
           onChange={handleChange}
         />
+        <span className="modal__error">{errors.username}</span>
       </label>
       <label className="modal__label" htmlFor="password">
         <input
@@ -52,6 +53,7 @@ const SignInModal = ({
           value={values.password}
           onChange={handleChange}
         />
+        <span className="modal__error">{errors.password}</span>
       </label>
     </ModalWithForm>
   );

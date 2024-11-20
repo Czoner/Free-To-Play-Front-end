@@ -64,7 +64,11 @@ const GamePage = () => {
     <div className="gamepage">
       <section className="gamepage__leftside">
         <h1 className="gamepage__title">{selectedGame.title}</h1>
-        <img src={selectedGame.thumbnail} className="gamepage__image" />
+        <img
+          src={selectedGame.thumbnail}
+          className="gamepage__image"
+          alt="Game Image"
+        />
         <p className="gamepage__developer">
           Developer: {selectedGame.developer}
         </p>
@@ -101,7 +105,11 @@ const GamePage = () => {
             {relatedGames.map((game) => (
               <li key={game.id} className="randomgame">
                 <Link to={`/games/${game.id || game._id}`}>
-                  <img className="randomgame__image" src={game.thumbnail} />
+                  <img
+                    className="randomgame__image"
+                    src={game.thumbnail}
+                    alt="Game Thumbnail"
+                  />
                 </Link>
                 <Link to={`/games/${game.id || game._id}`}>{game.title}</Link>
               </li>

@@ -10,7 +10,11 @@ const NothingFound = () => {
         Sorry, something went wrong during the request. There may be a
         connection issue or the server may be down. Please try again later.
       </p>
-      <img className="nothingpage__image" src={Dizzy}></img>
+      <img
+        className="nothingpage__image"
+        src={Dizzy}
+        alt="Nothing page image"
+      ></img>
     </div>
   );
 };

@@ -5,9 +5,6 @@
   line-height: 40px;
 }
 
-.games__section {
-}
-
 .games__list {
   display: grid;
   justify-content: center;

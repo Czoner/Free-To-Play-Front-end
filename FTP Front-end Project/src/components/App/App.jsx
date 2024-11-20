@@ -5,7 +5,7 @@ import Header from "../Header/Header";
 import Main from "../Main/Main";
 import GamePage from "../GamePage/GamePage";
 import { getGames } from "../../utils/FreetoGameApi";
-import { CurrentUserContext } from "../contexts/CurrentUserContext";
+import { CurrentUserContext } from "../../contexts/CurrentUserContext";
 import { setToken, getToken, removeToken } from "../../utils/token";
 import * as auth from "../../utils/Auth";
 import Footer from "../Footer/Footer";

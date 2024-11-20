@@ -1,6 +1,6 @@
 import React from "react";
-import { useForm } from "../Hooks/useForm";
 import ModalWithForm from "./ModalWithForm";
+import { useFormAndValidation } from "../../Hooks/useFormAndValidation";
 
 const SignUpModal = ({
   handleCloseModal,
@@ -8,15 +8,15 @@ const SignUpModal = ({
   handleSignInModal,
   handleSignUp,
 }) => {
-  const { values, handleChange } = useForm({
-    username: "",
-    email: "",
-    password: "",
-  });
+  const { values, handleChange, isValid, errors, resetForm } =
+    useFormAndValidation();
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    handleSignUp(values);
+    if (isValid) {
+      handleSignUp(values);
+      resetForm();
+    }
   };
 
   return (
@@ -40,6 +40,7 @@ const SignUpModal = ({
           value={values.email}
           onChange={handleChange}
         />
+        <span className="modal__error">{errors.email}</span>
       </label>
       <label className="modal__label" htmlFor="username__signup">
         <input
@@ -52,6 +53,7 @@ const SignUpModal = ({
           value={values.username}
           onChange={handleChange}
         />
+        <span className="modal__error">{errors.username}</span>
       </label>
       <label className="modal__label" htmlFor="password__signup">
         <input
@@ -64,6 +66,7 @@ const SignUpModal = ({
           value={values.password}
           onChange={handleChange}
         />
+        <span className="modal__error">{errors.password}</span>
       </label>
     </ModalWithForm>
   );

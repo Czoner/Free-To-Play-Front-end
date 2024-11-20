@@ -13,7 +13,7 @@
   transition: opacity 0.5s ease, visibility 0.5s ease;
 }
 
-.modal.active {
+.modal_active {
   opacity: 1;
   visibility: visible;
 }
@@ -92,7 +92,9 @@
   cursor: pointer;
 }
 
-.modal__buttons {
+.modal__error {
+  color: red;
+  padding: 10px 0 0 15px;
 }
 
 .modal__button {

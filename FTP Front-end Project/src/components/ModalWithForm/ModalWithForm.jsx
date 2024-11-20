@@ -31,7 +31,9 @@ const ModalWithForm = ({
   }, [isOpen, onClose]);
 
   return (
-    <div className={`modal ${isOpen ? "active" : ""} modal__type_${title}`}>
+    <div
+      className={`modal ${isOpen ? "modal_active" : ""} modal__type_${title}`}
+    >
       <div className="modal__content" ref={modalRef}>
         <button className="modal__close" type="button" onClick={onClose} />
         <h3 className="modal__title">{title}</h3>

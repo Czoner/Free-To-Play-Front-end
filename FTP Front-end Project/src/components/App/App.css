@@ -39,7 +39,7 @@
   white-space: nowrap;
 }
 
-.game__button_more {
+.game__button-more {
   width: 122px;
   height: 25px;
   margin: 0;
@@ -49,7 +49,7 @@
   cursor: pointer;
 }
 
-.game__extra_info {
+.game__extra-info {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -80,7 +80,7 @@
     width: 240px;
   }
 
-  .game__extra_info {
+  .game__extra-info {
     align-items: flex-end;
     width: 250px;
   }
