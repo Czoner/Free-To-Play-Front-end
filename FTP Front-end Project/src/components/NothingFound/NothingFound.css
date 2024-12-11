@@ -1,0 +1,29 @@
+.nothingpage {
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.nothingpage__title {
+  font-family: "OpenSans-SemiBold", Arial, sans-serif;
+}
+
+.nothingpage__bodytext {
+  font-family: "OpenSans-SemiBold", Arial, sans-serif;
+  font-weight: 500;
+  font-size: 23px;
+  line-height: 24px;
+}
+
+.nothingpage__image {
+  background-color: transparent;
+  color: white;
+  width: 300px;
+  height: 300px;
+}

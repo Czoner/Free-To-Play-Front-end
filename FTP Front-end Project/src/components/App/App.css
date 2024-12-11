@@ -1,0 +1,87 @@
+.game {
+  display: flex;
+  flex-direction: column;
+  border: 50px;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.game__img {
+  width: 400px;
+  height: 372px;
+}
+
+.game__info {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 20px 24px;
+  height: 120px;
+  color: black;
+  background-color: #c9c9c9;
+}
+
+.game__name {
+  font-family: "RobotoMedium", Arial, sans-serif;
+  margin: 0;
+}
+
+.game__description {
+  font-family: "RobotoRegular", Arial, sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 20px;
+  width: 352px;
+  margin: 0;
+  text-align: left;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.game__button-more {
+  width: 122px;
+  height: 25px;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.game__extra-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 350px;
+}
+
+.game__genre {
+  font-family: "RobotoRegular", Arial, sans-serif;
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 20px;
+  margin: 0;
+}
+
+@media screen and (max-width: 703px) {
+  .game__img {
+    width: 282px;
+    height: 200px;
+  }
+
+  .game__info {
+    width: 240px;
+    height: 100px;
+    align-items: center;
+  }
+
+  .game__description {
+    width: 240px;
+  }
+
+  .game__extra-info {
+    align-items: flex-end;
+    width: 250px;
+  }
+}

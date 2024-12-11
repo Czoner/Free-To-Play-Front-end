@@ -1,0 +1,157 @@
+.gamepage {
+  display: flex;
+}
+
+.gamepage__leftside {
+  margin-right: 125px;
+}
+
+.gamepage__rightside {
+}
+
+.gamepage__title {
+  font-family: "RobotoMedium", Arial, sans-serif;
+  font-size: 32px;
+  font-weight: 700;
+  line-height: 40px;
+  letter-spacing: 0em;
+  margin: 0 0 30px 0;
+}
+
+.gamepage__developer {
+  font-family: "RobotoRegular", Arial, sans-serif;
+  font-weight: 500;
+  font-size: 23px;
+  line-height: 24px;
+  margin: 30px 0 10px 0;
+}
+
+.gamepage__publication {
+  font-family: "RobotoRegular", Arial, sans-serif;
+  font-weight: 500;
+  font-size: 23px;
+  line-height: 24px;
+  margin: 0;
+}
+
+.gamepage__titlelayout {
+  font-family: "RobotoMedium", Arial, sans-serif;
+  font-size: 32px;
+  font-weight: 700;
+  line-height: 40px;
+  letter-spacing: 0em;
+  margin: 0 0 26px 0;
+}
+
+.gamepage__titleDes {
+  font-family: "RobotoMedium", Arial, sans-serif;
+  font-weight: 400;
+  font-size: 27px;
+  line-height: 40px;
+  text-align: left;
+}
+
+.gamepage__description {
+  font-family: "RobotoRegular", Arial, sans-serif;
+  font-weight: 400;
+  font-size: 21px;
+  line-height: 30px;
+  text-align: left;
+  margin: 0;
+  color: #9b9999;
+}
+
+.gamepage__titleshortDes {
+  font-family: "RobotoMedium", Arial, sans-serif;
+  font-weight: 400;
+  font-size: 27px;
+  line-height: 40px;
+  text-align: left;
+}
+
+.gamepage__shortdescription {
+  font-family: "RobotoRegular", Arial, sans-serif;
+  font-weight: 400;
+  font-size: 21px;
+  line-height: 30px;
+  text-align: left;
+  margin: 0;
+}
+
+.gamepage__relavencegames {
+  margin-top: 50px;
+}
+
+.gamepage__similargames {
+  font-family: "RobotoMedium", Arial, sans-serif;
+  font-size: 23px;
+  font-weight: 300;
+  line-height: 40px;
+  letter-spacing: 0em;
+}
+
+.gamepage__randomgames {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 0;
+  margin: 0;
+  gap: 50px;
+  list-style-type: none;
+}
+
+.gamepage__website {
+  font-family: "RobotoRegular", Arial, sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 20px;
+  text-align: center;
+  border: none;
+  border-radius: 10px;
+  color: white;
+  background-color: #303030;
+  padding: 10px 20px;
+  cursor: pointer;
+}
+
+.randomgame {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.randomgame__image {
+  display: flex;
+  width: 248px;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+  font-family: "RobotoMedium", Arial, sans-serif;
+  font-weight: 400;
+  font-size: 27px;
+  line-height: 40px;
+  text-align: left;
+}
+
+@media screen and (max-width: 1410px) {
+  .gamepage {
+    flex-direction: column;
+  }
+
+  .gamepage__leftside {
+    margin-bottom: 100px;
+  }
+
+  .gamepage__title {
+    font-size: 42px;
+    line-height: 50px;
+  }
+}
+
+@media screen and (max-width: 464px) {
+  .gamepage__image {
+    width: 240px;
+    height: 150px;
+  }
+}

@@ -1,0 +1,15 @@
+.searchbar {
+  width: 400px;
+  height: 60px;
+  border: none;
+  border-radius: 30px;
+  outline: none;
+  padding: 0 0 0 24px;
+}
+
+@media screen and (max-width: 900px) {
+  .searchbar {
+    width: 276px;
+    height: 45px;
+  }
+}

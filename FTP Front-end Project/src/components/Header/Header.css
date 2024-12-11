@@ -1,0 +1,167 @@
+.header {
+  display: flex;
+  justify-content: space-between;
+  position: sticky;
+  top: 0px;
+  background-color: black;
+  padding: 25px 0;
+}
+
+.header__image {
+  width: 100px;
+  height: 100px;
+  background-color: black;
+}
+
+.header__logo {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.header__description {
+  display: flex;
+  align-items: center;
+}
+
+.header__games {
+  font-family: "RobotoMedium", Arial, sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 20px;
+  text-align: center;
+  border: none;
+  border-radius: 10px;
+  color: white;
+  background-color: transparent;
+  padding: 0 20px;
+}
+
+.header__games:hover {
+  background-color: #303030;
+  cursor: pointer;
+}
+
+.header__games:active {
+  opacity: 0.7;
+}
+
+.header__stufff {
+  font-family: "RobotoRegular", Arial, sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 20px;
+  text-align: center;
+  border: none;
+  border-radius: 10px;
+  color: white;
+  background-color: transparent;
+  padding: 0 20px;
+}
+
+.header__stufff:hover {
+  background-color: #303030;
+  cursor: pointer;
+}
+
+.header__stufff:active {
+  opacity: 0.7;
+}
+
+.header__signin {
+  font-family: "RobotoRegular", Arial, sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 20px;
+  text-align: center;
+  border: none;
+  border-radius: 10px;
+  color: white;
+  background-color: transparent;
+  padding: 0 20px;
+  height: 50px;
+}
+
+.header__signin:hover {
+  background-color: #303030;
+  cursor: pointer;
+}
+
+.header__signin:active {
+  opacity: 0.7;
+}
+
+.header__signup {
+  font-family: "RobotoRegular", Arial, sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 20px;
+  text-align: center;
+  border: none;
+  border-radius: 10px;
+  color: white;
+  background-color: transparent;
+  padding: 0 20px;
+  height: 50px;
+}
+
+.header__signup:hover {
+  background-color: #303030;
+  cursor: pointer;
+}
+
+.header__signup:active {
+  opacity: 0.7;
+}
+
+.header__signOut {
+  font-family: "RobotoRegular", Arial, sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 20px;
+  text-align: center;
+  border: none;
+  border-radius: 10px;
+  width: 142px;
+  height: 50px;
+  cursor: pointer;
+}
+
+.header__username {
+  font-family: "RobotoRegular", Arial, sans-serif;
+  font-weight: 400;
+  font-size: 26px;
+  line-height: 20px;
+  margin: 0 20px;
+}
+
+@media screen and (max-width: 776px) {
+  .header {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .header__logo {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .header__image {
+    width: 150px;
+    height: 150px;
+  }
+
+  .header__description {
+    margin-top: 20px;
+    justify-content: center;
+  }
+
+  .header__signin {
+    margin-right: 20px;
+    margin-top: 20px;
+  }
+
+  .header__signup {
+    margin-top: 20px;
+  }
+}

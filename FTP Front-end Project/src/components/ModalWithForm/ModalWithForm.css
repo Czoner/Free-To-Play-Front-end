@@ -1,0 +1,111 @@
+.modal {
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.5);
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.5s ease, visibility 0.5s ease;
+}
+
+.modal_active {
+  opacity: 1;
+  visibility: visible;
+}
+
+.modal__content {
+  position: relative;
+  background-color: white;
+  max-width: 496px;
+  border-radius: 20px;
+  overflow: hidden;
+  padding: 28px 30px 36px 28px;
+}
+
+.modal__title {
+  font-family: "RobotoRegular", Arial, sans-serif;
+  font-size: 32px;
+  font-weight: 700;
+  line-height: 40px;
+  letter-spacing: 0em;
+  text-align: left;
+  margin-bottom: 24px;
+  margin-top: 0;
+  color: black;
+}
+
+.modal__close {
+  position: absolute;
+  top: 20px;
+  right: 28px;
+  width: 30px;
+  height: 30px;
+  border: none;
+  background-image: url("../../assets/Close.svg");
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-color: transparent;
+  cursor: pointer;
+}
+
+.modal__form {
+  display: flex;
+  flex-direction: column;
+}
+
+.modal__label {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 20px;
+}
+
+.modal__input {
+  font-family: "RobotoRegular", Arial, sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 20px;
+  width: 400px;
+  height: 60px;
+  border: 1px solid #cfcfcf;
+  border-radius: 30px;
+  padding: 0 0 0 24px;
+}
+
+.modal__submit {
+  font-family: "RobotoRegular", Arial, sans-serif;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 24px;
+  width: 129px;
+  height: 64px;
+  padding: 0;
+  margin: 0;
+  text-align: center;
+  border: 0;
+  border-radius: 100px;
+  background-color: #8cace5;
+  cursor: pointer;
+}
+
+.modal__error {
+  color: red;
+  padding: 10px 0 0 15px;
+}
+
+.modal__button {
+  font-family: "RobotoRegular", Arial, sans-serif;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 24px;
+  padding: 0;
+  margin: 39px 0 0 20px;
+  text-align: center;
+  border: 0;
+  background-color: transparent;
+  cursor: pointer;
+}

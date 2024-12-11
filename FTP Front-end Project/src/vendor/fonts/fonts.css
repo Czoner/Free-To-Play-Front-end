@@ -1,0 +1,13 @@
+@font-face {
+  font-family: "RobotoMedium";
+  src: url("./RobotoMedium.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: "RobotoRegular";
+  src: url("./RobotoRegular.woff2") format("woff2");
+}
+@font-face {
+  font-family: "OpenSans-SemiBold";
+  src: url("./OpenSans-SemiBold.woff") format("woff");
+}
